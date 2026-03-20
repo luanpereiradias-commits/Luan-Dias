@@ -6,9 +6,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            /* Logo grande e mais abaixo */
             background: url("https://logodownload.org/wp-content/uploads/2014/04/nike-logo-0.png") no-repeat center 400px;
-            background-size: 500px; /* logo grande */
+            background-size: 500px; 
             background-color: #f2f2f2;
             margin: 0;
             padding: 0;
@@ -16,7 +15,7 @@
 
         .container {
             max-width: 400px;
-            margin: 50px auto 50px auto; /* Subi bastante o formulário */
+            margin: 50px auto;
             background: rgba(255, 255, 255, 0.95);
             padding: 25px;
             border-radius: 12px;
@@ -83,6 +82,9 @@
         <label for="telefone">Telefone</label>
         <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone" required pattern="\d{10,11}">
 
+        <label for="cpf">CPF</label>
+        <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" required pattern="\d{3}\.\d{3}\.\d{3}\-\d{2}">
+
         <button type="submit">Cadastrar</button>
     </form>
     <div class="success-message" id="successMessage">Cadastro realizado com sucesso!</div>
@@ -98,8 +100,9 @@
         const nome = form.nome.value.trim();
         const email = form.email.value.trim();
         const telefone = form.telefone.value.trim();
+        const cpf = form.cpf.value.trim(); // Obtendo o CPF
 
-        const cliente = { nome, email, telefone };
+        const cliente = { nome, email, telefone, cpf };
         let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
         clientes.push(cliente);
         localStorage.setItem("clientes", JSON.stringify(clientes));
